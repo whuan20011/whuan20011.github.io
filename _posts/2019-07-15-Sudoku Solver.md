@@ -16,14 +16,13 @@ title: Leetcode|Sudoku Solver|Python
 
 ```python
 class Solution(object):
-    #得到填写好的棋盘， 在原棋盘上进行修改并打印
+    #得到填写好的棋盘， 在原棋盘上进行修改
     def solveSudoku(self, board):
         completed_board = self.dfs(board)
         for row in range(9):
             for col in range(9):
                 if board[row][col] == ".":
                     board[row][col] = completed_board[row][col]
-        print board
     #检测棋盘
     def check_board(self, board):
         for i in range(9):
