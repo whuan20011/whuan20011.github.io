@@ -3,7 +3,6 @@ layout: posts
 title: Grammars|sort|sorted|reserve|reserved
 ---
 
-```python
 1   sorted(iterable, cmp, key, reverse)
     此函数保留原列表， 不对其进行修改， 而是返回一个新的list。
     iterable指可迭代对象
@@ -30,6 +29,6 @@ title: Grammars|sort|sorted|reserve|reserved
 4   list.reverse()
     该函数无返回值， 会对原列表进行反向排序。
 5   lambda x: x + 1
-```
+
 
  
