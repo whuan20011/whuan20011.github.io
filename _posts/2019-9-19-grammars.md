@@ -2,7 +2,8 @@
 layout: posts
 title: Grammars|sort|sorted|reserve|reserved
 ---
-```
+
+```python
 1   sorted(iterable, cmp, key, reverse)
     #此函数保留原列表， 不对其进行修改， 而是返回一个新的list。
     #iterable指可迭代对象
