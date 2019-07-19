@@ -29,6 +29,7 @@ title: Grammars|sort|sorted|reserve|reserved
     该函数有返回值， 不对原seq进行修改。
 4   list.reverse()
     该函数无返回值， 会对原列表进行反向排序。
+5   lambda x: x + 1
 ```
 
  
