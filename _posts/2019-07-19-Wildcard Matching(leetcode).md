@@ -8,6 +8,32 @@ title: Leetcode|Wildcard Watching|Python
 题目详解：
 
 算法：DP
+```python
+class Solution(object):
+    def isMatch(self, s, p):
+        dic = {}
+        return self.dp(s, p, len(s), len(p), dic)
+    def dp(self, s, p, i, j, dic):
+        if (i, j) in dic:
+            return dic[(i, j)]
+        if i == 0 and j == 0:
+            return True
+        elif i == 0 and j != 0:
+            for k in range(j):
+                if p[k] != "*":
+                    return False
+            return True
+        elif j == 0 and i != 0:
+            return False
+        elif s[i - 1] == p[j - 1] or p[j - 1] == "?":
+            dic[(i, j)] = self.dp(s, p, i - 1, j - 1, dic)
+            return dic[(i, j)]
+        elif p[j - 1] == "*":
+            dic[(i, j)] = self.dp(s, p, i, j - 1, dic) or self.dp(s, p, i-1, j, dic)
+            return dic[(i, j)]
+        else:
+            return False
+```
 
 ```python
 class Solution(object):
