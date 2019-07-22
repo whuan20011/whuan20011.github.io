@@ -113,3 +113,51 @@ class Solution(object):
                     dic[(s[i:], p[k:])] = False
                     return False
 ```
+
+题目(regular expression)大意：有两个字符串s和p。s字符串可以为空串或者只包含a到z中小写字母。p字符串可以为空串，也可以有任何小写字母，也可以含有“.”或者“*”。其中点可以和任何一个小写字母匹配， 星号表示0个或任何多个星号的前一个字母。问题是：给两个字符串s和p， 判断p能否匹配s。
+
+题目详解：本题与上一题非常相似， 解法也是依据上一题得来， 依旧为动态规划+记忆化搜索。
+
+算法：DP
+
+```python
+class Solution(object):
+    def isMatch(self, s, p):
+        dic = {}
+        return self.dp(s, p, len(s), len(p), dic)
+    def dp(self, s, p, i, j, dic):
+        if (i, j) in dic:
+            return dic[i, j]
+        #第一种：s和p均检索到尽头
+        if i == 0 and j == 0:
+            return True
+        #第二种：s检索到尽头，p还没有， 说明剩下的p总体上应变为空，才能匹配。所以剩下的需要检索的p长度必须为偶数，且不论第基数个位置是什么，第偶数
+        #位必须为星号， 这样星号才可以把奇数位上的消掉，使剩下的总体变为空串。
+        elif i == 0 and j != 0:
+            if j % 2 == 0:
+                for k in range(1, j, 2):
+                    if p[k] != "*":
+                        return False
+                return True
+            return False
+        #第三种：p已经被检索结束， s还有未被检索的字母， 则不匹配。
+        elif j == 0 and i != 0:
+            return False
+        #第四种： s和p均未被检索完， 且最后一位相等或p的最后一位为点，则均向左一位继续匹配。
+        elif s[i - 1] == p[j - 1] or p[j - 1] == ".":
+            dic[(i, j)] = self.dp(s, p, i - 1, j - 1, dic)
+            return dic[(i, j)]
+        #第五种：p的当前最右位为星号， 则看星号前一位， 如果星号前一位和s最右位不相同或星号前一位不为点， 则需要将星号及其前面一位消失掉，即p
+        #向左移两位， 继续与s进行匹配。如果星号前一位和s最右位相同， 则要么把s最右位消失掉， 要么把p星号和前一位消失掉。
+        elif p[j - 1] == "*":
+            if p[j - 2] != s[i - 1] and p[j - 2] != ".":
+                dic[i, j] = self.dp(s, p, i, j - 2, dic)
+                return dic[i, j]
+            else:
+                dic[i, j] = self.dp(s, p, i - 1, j, dic) or self.dp(s, p, i, j - 2, dic)
+                return dic[i, j]  
+        #第六种：其他情况， 不匹配。
+        else:
+            return False
+```
+
