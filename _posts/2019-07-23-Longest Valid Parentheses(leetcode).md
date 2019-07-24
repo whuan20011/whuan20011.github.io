@@ -16,7 +16,7 @@ Explanation: The longest valid parentheses substring is "()()"
 
 题目详解：该题目比较简单， 解释略。
 
-算法：字符串处理。
+算法：字符串处理
 
 ```python
 class Solution(object):
