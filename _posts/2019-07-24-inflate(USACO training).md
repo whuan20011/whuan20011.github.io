@@ -30,11 +30,13 @@ def solution():
     for j in range(1, M + 1):
         for i in range(N):
             if i == 0:
+                #尽可能多的取
                 if j >= points_minutes[i][1]:
                     chart[i][j] = (j / points_minutes[i][1]) * points_minutes[i][0]
                 else:
                     chart[i][j] = 0
             else:
+                #至少取一个和一个都不取进行比较
                 if j >= points_minutes[i][1]:
                     chart[i][j] = max(chart[i][j - points_minutes[i][1] + points_minutes[i][0], chart[i - 1][j])
                 else:
