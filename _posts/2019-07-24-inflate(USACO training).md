@@ -36,8 +36,7 @@ def solution():
                     chart[i][j] = 0
             else:
                 if j >= points_minutes[i][1]:
-                    chart[i][j] = max(chart[i][j - points_minutes[i][1]]
-                    + points_minutes[i][0], chart[i - 1][j])
+                    chart[i][j] = max(chart[i][j - points_minutes[i][1] + points_minutes[i][0], chart[i - 1][j])
                 else:
                     chart[i][j] = chart[i - 1][j]
     print >>fout, chart[N -1][M]
