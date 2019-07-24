@@ -4,6 +4,7 @@ title: Leetcode|Longest Valid Parentheses|python
 ---
 
 题目大意：给定一个字符串，该字符串只包含"("和")",求该字符串的最大有效长度。
+
 Example 1:
 Input: "(()"
 Output: 2
