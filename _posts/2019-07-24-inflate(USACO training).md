@@ -7,6 +7,9 @@ title: USACO training|3.1|Score Inflation|inflate|python
 
 题目详解：由题目意思可以看出，在有限时间内尽可能得到更多分数， 此为背包👜问题。由于每种题可以做多道， 所以这不是0-1背包👜， 但所有的背包👜问题都是0-1背包👜得来的， 所以此处附加0-1背包👜问题详解。此图由左向右， 由下向上生成。
 
+![Screenshot 2019-07-24 at 12.17.46 PM.png](https://i.loli.net/2019/07/25/5d39d074d32a435510.png)
+
+
 算法：backpack（背包👜问题）
 
 ```python
