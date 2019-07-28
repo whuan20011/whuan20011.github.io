@@ -65,3 +65,48 @@ class Solution(object):
             idx += 1
         return sum(arr)
 ```
+```python
+class Solution(object):
+    def calculate(self, s):
+        s = "(" + s + ")"
+        arr = []
+        temp = 0
+        tag = 0
+        for char in s:
+            if char.isdigit():
+                temp = temp * 10 + int(char)
+                tag = 1
+            else:
+                if char == " ":
+                    continue
+                if char == "(":
+                    arr.append(char)
+                if arr and arr[-1] == "(" and tag == 1:
+                    arr.append(temp)
+                    temp = 0
+                    tag = 0
+                elif arr and arr[-1] == "+":
+                    arr.pop()
+                    arr.append(arr.pop() + temp)
+                    temp = 0
+                    tag = 0
+                elif arr and arr[-1] == "-":
+                    arr.pop()
+                    arr.append(arr.pop() - temp)
+                    temp = 0
+                    tag = 0
+                if char in ["+", "-"]:
+                    arr.append(char)
+                elif char == ")":
+                    cur = arr.pop()
+                    arr.pop()
+                    if not arr or (arr and arr[-1] == "("):
+                        arr.append(cur)
+                    if arr and arr[-1] == "+":
+                        arr.pop()
+                        arr.append(arr.pop() + cur)
+                    if arr and arr[-1] == "-":
+                        arr.pop()
+                        arr.append(arr.pop() - cur)
+        return arr[0]
+```
