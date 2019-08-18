@@ -63,9 +63,11 @@ class Solution(object):
         return res
 ```
 
-本题再附加一道类似题目：
+本题再附加一道类似题目, 这道题是我在网上看到其他博主写的， 转载过来， 以便学习。
 
-原文连接：https://blog.csdn.net/yurenguowang/article/details/77483402
+版权声明：本文为CSDN博主「愚人国王」的原创文章，遵循CC 4.0 by-sa版权协议，转载请附上原文出处链接及本声明。
+
+原文链接：https://blog.csdn.net/yurenguowang/article/details/77483402
 
 题目大意：
 
@@ -93,13 +95,10 @@ class Solution(object):
 中有3个岛。
 
 
- ———————————————— 
- 
-版权声明：本文为CSDN博主「愚人国王」的原创文章，遵循CC 4.0 by-sa版权协议，转载请附上原文出处链接及本声明。
-
-原文链接：https://blog.csdn.net/yurenguowang/article/details/77483402
-
 题目详解：深度优先思想。遍历矩阵的每个元素，如果为1则计数加一，同时把自己和周围的元素都置0。
+
+我的想法： 这道题原作者用的dfs， 也可以如上题用bfs来解决(此处不附加bfs解此题代码)。也就是说这道题两种方法都可以。但对于上一道题， 就不能用dfs来解决，
+因为深度优先出来的不一定是最近距离， 所以只能广度优先。
 
 算法：dfs
 
@@ -134,7 +133,7 @@ class Solution:
             self.dfs(grid, i - 1, j)
             self.dfs(grid, i, j - 1)
             self.dfs(grid, i, j + 1)
- ———————————————— 
-版权声明：本文为CSDN博主「愚人国王」的原创文章，遵循CC 4.0 by-sa版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/yurenguowang/article/details/77483402
+#———————————————— 
+#版权声明：本文为CSDN博主「愚人国王」的原创文章，遵循CC 4.0 by-sa版权协议，转载请附上原文出处链接及本声明。
+#原文链接：https://blog.csdn.net/yurenguowang/article/details/77483402
 ```
