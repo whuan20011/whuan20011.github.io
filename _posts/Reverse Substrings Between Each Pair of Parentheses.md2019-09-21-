@@ -1,0 +1,39 @@
+---
+layout: post
+title: Leetcode|Reverse Substrings Between Each Pair of Parentheses|Python
+---
+
+题目大意：给一个由小写英文字母和左右括号组成的字符串，对于每一个左右匹配的字符串， 请把括号内的字符反过来并去掉括号， 从最里面的括号开始， 
+直到把所有括号全部去掉。
+
+题目详解：本题只要想到算法， 很简单。即找到最里面的括号， 再进行反转就可以了。
+
+算法：字符串
+
+```python
+class Solution(object):
+    def reverseParentheses(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        left = 0
+        right = 0
+        while left != -1 and right != -1:
+            left, right = self.innermost_brackets(s)
+            if left != -1 and right != -1:
+                #反转括号内字符串操作
+                s = s[:left] + s[left + 1: right][::-1] + s[right + 1:]
+        return s  
+    #寻找最里面的左右匹配括号
+    def innermost_brackets(self, s):
+        left_bracket = -1
+        right_bracket = -1
+        for idx, char in enumerate(s):
+            if char == '(':
+                left_bracket = idx
+            if char == ')':
+                right_bracket = idx
+                break
+        return [left_bracket, right_bracket]
+```
